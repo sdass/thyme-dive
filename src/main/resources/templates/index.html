@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www/thymeleaf.org">
+
+<head th:replace="fragments/frgmntlayout::site-head">
+	<meta charset="UTF-8"/>
+	<title>Thyme diving</title>
+</head>
+
+<body>
+	<header th:replace="fragments/frgmntlayout::site-header"/>
+	<h5>Welcome to Spring Thymeleaf2</h5>
+	Now is: <b th:text="${execInfo.now.time}"></b>
+</body>
+
+</html>
