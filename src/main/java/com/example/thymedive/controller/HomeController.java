@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.thymedive.model.Post;
@@ -17,8 +18,9 @@ public class HomeController {
 	PostServiceStub postServiceStub;
 	
 	@RequestMapping("/")
-	public String index() {
+	public String index(Model model) {
 		System.out.println("root controller ...");
+		model.addAttribute("allposts", postServiceStub.findAll());
 		return "index";
 	}
 
@@ -38,5 +40,13 @@ public class HomeController {
 				
 		
 		return "postlist";
+	}
+	
+	@RequestMapping("/posts/view/{id}")
+	public String singlePost(@PathVariable("id") Long id, Model model){
+		Post post = postServiceStub.findById(--id);
+		System.out.println("id=" + id + " post=" + post);
+		model.addAttribute("thepost", post);
+		return "onepost/oneview";
 	}
 }

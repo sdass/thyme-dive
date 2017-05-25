@@ -10,6 +10,12 @@
 	<header th:replace="fragments/frgmntlayout::site-header"/>
 	<h5>Welcome to Spring Thymeleaf2</h5>
 	Now is: <b th:text="${execInfo.now.time}"></b>
+	
+		<!-- sidebar -->
+	<aside>
+	<h3>Recent Posts</h3>
+	<a th:each="q1 : ${allposts}" th:text="${q1.title} + '-' + ${q1.id}" th:href="@{/posts/view/{id}/(id=${q1.id})}">on Html5.1</a>
+	</aside>
 </body>
 
 </html>

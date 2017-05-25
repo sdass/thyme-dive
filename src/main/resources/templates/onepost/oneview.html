@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+</head>
+
+<body>
+	<header th:replace="fragments/frgmntlayout::site-header"/>
+	<h5>Single post</h5>
+	
+	<main id="apost">
+
+		<article >
+			<h3 class="title" th:text="${thepost.title}">Post Title</h3>
+			<span class="date"> <i>posted on</i> </span>
+			<span th:text="${#dates.format(thepost.date, 'dd-MM-yyyy')}">22-May-2017</span>
+			<span th:if="${thepost.author}" th:text=" 'by ' + ${thepost.author.username} "></span>
+			<span th:if="${thepost.author} and ${thepost.author.fullName}" th:text=" ' (' + ${thepost.author.fullName} + ')' "></span>
+			
+			<p class="content" th:utext="${thepost.body}">Post Content</p>
+ 
+		</article>
+	
+	</main>
+
+<footer th:replace="fragments/frgmntlayout::site-footer"/>
+
+</body>
+
+
+</html>

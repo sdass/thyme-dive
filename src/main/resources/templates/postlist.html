@@ -13,7 +13,8 @@
 	<h5>Welcome to Spring Thymeleaf</h5>
 	Now is: <b th:text="${execInfo.now.time}"></b>
 	
-	<span th:text="#{welocme.home}"></span>
+	<span th:text="#{welocme.home}">Default Welcome message</span>
+
 
 	<main id="posts">
 	<div th:text="'record count ' + ${allposts.size()}"> </div>
@@ -22,14 +23,12 @@
 			<span class="date"> <i>posted on</i> </span>
 			<span th:text="${#dates.format(p1.date, 'dd-MM-yyyy')}">22-May-2017</span>
 			<span th:if="${p1.author}" th:text=" 'by ' + ${p1.author.username} "></span>
-			<span th:if="${p1.author == null}" th:text=" 'NO AUTHOR' "></span>  
-
-		
-		
+			<p class="content" th:utext="${p1.body}">Post Content</p>
+ 
 		</article>
 	
 	</main>
-
+	
 
 </body>
 
